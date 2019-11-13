@@ -1,0 +1,40 @@
+目录结构
+├── build                      # 构建相关,打包后的
+├── mock                       # 项目mock 模拟数据
+├── public                     # 静态资源,图片,html 模板
+│   │── favicon.ico            # favicon图标
+│   └── index.html             # html模板
+├── src                        # 源代码
+│   ├── api                    # 所有请求
+│   ├── assets                 # 主题 字体等静态资源
+│   ├── components             # 全局公用组件
+│   ├── icons                  # 项目所有 svg icons
+│   ├── layout                 # 全局 layout
+│   ├── router                 # 路由
+│   ├── store                  # 全局 store管理
+│   ├── styles                 # 全局样式
+│   ├── utils                  # 全局公用方法
+│   ├── views                  # views 所有页面
+│   ├── App.vue                # 入口页面
+│   ├── main.js                # 入口文件 加载组件 初始化等
+│   ├── permission.js          # 权限管理
+|   └── settings.js            # 侧边栏图标管理
+├── tests                      # 测试
+├── .env.xxx                   # 环境变量配置
+├── .eslintrc.js               # eslint 配置项
+├── .babelrc                   # babel-loader 配置
+├── .travis.yml                # 自动化CI配置
+├── vue.config.js              # vue-cli 配置
+├── postcss.config.js          # postcss 配置
+└── package.json               # package.json
+
+
+vue + express + mongoDB
+就是 vue 请求 express 接口,在 express 接口中,操作mongoDB
+
+
+1. 超级管理员  创建管理员和普通用户    管理员有编辑数据的权限  普通用户只有查看的权限   权限列表
+2. 条件 差几门毕业  1年 9门 差1门毕业        2年 9门 差11门毕业
+3. 成绩查找,成绩门数要有大于15  或者小于15 这样的条件/  >3   <15
+4. 班级列表 查看班级成员    销毁的时候进入可编辑的类别  可以修改成绩和班级
+5. 修改学生成绩信息,改成弹窗组件修改
