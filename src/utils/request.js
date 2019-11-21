@@ -37,16 +37,16 @@ service.interceptors.response.use(response => {
   // 如果自定义代码不是20000，则判断为错误。
   if (res.code !== 20000) {
     Message({
-      message: res.message || 'Error',
+      message: res.message || '用户名或密码错误',
       type: 'error',
       duration: 5 * 1000
     })
     // 50008: 非法令牌；50012:其他客户端登录；50014:令牌过期；
     if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
       // to re-login
-      MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
-        confirmButtonText: 'Re-Login',
-        cancelButtonText: 'Cancel',
+      MessageBox.confirm(res.message, '身份过期', {
+        confirmButtonText: '重新登录',
+        cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
         store.dispatch('user/resetToken').then(() => {
@@ -54,7 +54,7 @@ service.interceptors.response.use(response => {
         })
       })
     }
-    return Promise.reject(new Error(res.message || 'Error'))
+    return Promise.reject(new Error(res.message || 'Error:其他错误'))
   } else {
     return res
   }

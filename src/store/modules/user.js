@@ -38,8 +38,8 @@ const actions = {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
-        commit('SET_TOKEN', response._id)
-        setToken(response._id)
+        commit('SET_TOKEN', response.token)
+        setToken(response.token)
         resolve()
       }).catch(error => {
         reject(error)
@@ -55,17 +55,14 @@ const actions = {
         if (!response) {
           return false
         }
-
-        const { username, roles, _id, avatar, level } = response
+        const { username, roles, avatar, level } = response
         if (!roles || roles.length <= 0) {
           reject('角色必须是非空数组')
         }
-        commit('SET_TOKEN', _id)
         commit('SET_NAME', username)
         commit('SET_ROLES', roles)
         commit('SET_LEVEL', level)
         commit('SET_AVATAR', avatar)
-        setToken(_id)
         resolve(response)
       }).catch(error => {
         reject(error)
@@ -97,7 +94,7 @@ const actions = {
       resolve()
     })
   },
-  // dynamically modify permissions
+  // 动态修改权限
   changeRoles({ commit, dispatch }, role) {
     return new Promise(async resolve => {
       const token = role + '-token'
@@ -109,13 +106,13 @@ const actions = {
 
       resetRouter()
 
-      // generate accessible routes map based on roles
+      // 基于角色生成可访问路由图
       const accessRoutes = await dispatch('permission/generateRoutes', roles, { root: true })
 
-      // dynamically add accessible routes
+      // 动态添加可访问路由
       router.addRoutes(accessRoutes)
 
-      // reset visited views and cached views
+      // 重置访问的视图和缓存的视图
       dispatch('tagsView/delAllViews', null, { root: true })
 
       resolve()

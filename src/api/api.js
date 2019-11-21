@@ -1,5 +1,5 @@
 import axios from 'axios'
-const url = 'http://localhost:8888'
+const url = 'http://127.0.0.1:8888'
 
 // 用户登录
 export const adminLogin = (admin) => {
@@ -7,7 +7,6 @@ export const adminLogin = (admin) => {
 }
 // 添加用户
 export const addAdmin = (admin) => {
-  console.log(admin)
   return axios.post(url + '/addadmin', { ...admin })
 }
 

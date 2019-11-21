@@ -16,7 +16,14 @@
         class="el_from_item_lch"
         label="创建时间: "
       >
-        <el-input v-model="data.classDate" />
+        <el-date-picker
+          v-model="data.classDate"
+          style="width:100%"
+          type="date"
+          placeholder="创建时间"
+          format="yyyy-MM-dd"
+          value-format="yyyy-MM-dd"
+        />
       </el-form-item>
       <el-form-item
         class="el_from_item_lch"
@@ -77,7 +84,11 @@ export default {
         classMaster: this.data.classMaster
       }
       addClass(val).then(data => {
-        alert(data.data)
+        this.$message({
+          showClose: true,
+          message: data.data,
+          type: 'warning'
+        })
         for (const key in this.data) {
           this.data[key] = ''
         }

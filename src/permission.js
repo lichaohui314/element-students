@@ -8,7 +8,7 @@ import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false }) // NProgress配置  是否有转圈效果
 
-const whiteList = ['/login'] // 无重定向白名单
+const whiteList = ['/login', '/register'] // 无重定向白名单
 
 router.beforeEach(async(to, from, next) => {
   // 开始进度条
@@ -18,7 +18,7 @@ router.beforeEach(async(to, from, next) => {
   document.title = getPageTitle(to.meta.title)
 
   // 确定用户是否已登录
-  const hasToken = getToken()
+  const hasToken = getToken() || ''
 
   if (hasToken) {
     if (to.path === '/login') {

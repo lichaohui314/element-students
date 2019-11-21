@@ -11,11 +11,11 @@ export function login(data) {
 }
 
 // 获取用户信息
-export function getInfo(_id) {
+export function getInfo(token) {
   return request({
     url: url + '/admintoken',
     method: 'get',
-    params: { _id }
+    params: { token }
   })
 }
 

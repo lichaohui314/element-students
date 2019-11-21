@@ -8,11 +8,23 @@
     >
       <el-form-item
         class="el_from_item_lch"
+        label="入学时间: "
+      >
+        <el-date-picker
+          v-model="data.date"
+          type="date"
+          placeholder="选择日期"
+          format="yyyy 年 MM 月 dd 日"
+          value-format="yyyy-MM-dd"
+        />
+      </el-form-item>
+
+      <el-form-item
+        class="el_from_item_lch"
         label="姓名: "
       >
         <el-input v-model="data.name" />
       </el-form-item>
-
       <el-form-item
         class="el_from_item_lch"
         label="性别: "
@@ -89,6 +101,7 @@ export default {
   data() {
     return {
       data: {
+        date: '',
         name: '', // 姓名
         sex: '', // 性别单选框
         age: '', // 年龄
@@ -103,7 +116,7 @@ export default {
     addstu() {
       // 创建一个存储对象
       const val = {
-        date: new Date().getTime(),
+        date: this.data.date,
         name: this.data.name, // 姓名
         sex: this.data.sex, // 性别单选框
         age: this.data.age, // 年龄
@@ -121,31 +134,52 @@ export default {
         this.data.result === '' ||
         this.data.fail === ''
       ) {
-        alert('请检查你的输入框,不能为空哦')
+        this.$message({
+          showClose: true,
+          message: '请检查你的输入框,不能为空哦',
+          type: 'warning'
+        })
         return false
       } else if (/\D+/g.test(this.data.age)) {
         // 判断年龄是不是数字的正则
-        alert('年龄只能是数字哦')
+        this.$message({
+          showClose: true,
+          message: '年龄只能是数字哦',
+          type: 'warning'
+        })
         return false
       } else if (/.*[\u4e00-\u9fa5]+.*$/.test(this.data.result)) {
         // 判断不带汉字的正则
-        alert('成绩不能有汉字')
+        this.$message({
+          showClose: true,
+          message: '成绩不能有汉字',
+          type: 'warning'
+        })
         return false
       } else if (/.*[\u4e00-\u9fa5]+.*$/.test(this.data.fail)) {
         // 判断不带汉字的正则
-        alert('挂科次数不能有汉字')
+        this.$message({
+          showClose: true,
+          message: '挂科次数不能有汉字',
+          type: 'warning'
+        })
         return false
       }
+      // 添加学生按钮
       addStuend(val).then(data => {
-        alert(data.data)
+        this.$message({
+          showClose: true,
+          message: data.data,
+          type: 'success'
+        })
         // 清空表单
         for (const key in this.data) {
           this.data[key] = ''
         }
       })
     },
+    // 清空表单
     clear() {
-      // 清空表单
       for (const key in this.data) {
         this.data[key] = ''
       }

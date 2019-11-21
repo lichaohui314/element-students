@@ -112,7 +112,11 @@ export default {
             return false
           }
         } else {
-          alert(doc.data)
+          this.$message({
+            showClose: true,
+            message: doc.data,
+            type: 'error'
+          })
         }
       })
     }

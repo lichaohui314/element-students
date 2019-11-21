@@ -38,8 +38,8 @@ export const constantRoutes = [
   },
 
   {
-    path: '/404',
-    component: () => import('@/views/404'),
+    path: '/register',
+    component: () => import('@/views/addadmin/register'),
     hidden: true
   },
 
@@ -59,14 +59,13 @@ export const asyncRoutes = [
   {
     path: '/addadmin',
     component: Layout,
-    children: [
-      {
-        path: '/addadmin',
-        name: 'Addadmin',
-        component: () => import('@/views/addadmin/index'),
-        meta: { title: '添加用户', icon: 'form', roles: ['5'] }
-      }
-    ]
+    redirect: '/',
+    children: [{
+      path: '/addadmin',
+      name: 'addadmin',
+      component: () => import('@/views/addadmin/index'),
+      meta: { title: '添加用户', icon: 'form', roles: ['5'] }
+    }]
   },
   {
     path: '/teacher',
@@ -87,7 +86,7 @@ export const asyncRoutes = [
     meta: { title: '学生', icon: 'table' },
     children: [
       {
-        path: 'stuList',
+        path: 'stulist',
         name: 'Stulist',
         component: () => import('@/views/student/stulist/index'),
         meta: { title: '所有学生', icon: 'table' }
@@ -96,7 +95,7 @@ export const asyncRoutes = [
         path: 'stuoper',
         name: 'Stuoper',
         component: () => import('@/views/student/stuoper/index'),
-        meta: { title: '添加学生', icon: 'form', roles: ['5', '1'] }
+        meta: { title: '添加学生', icon: 'form', roles: ['5', '3'] }
       }
     ]
   },
@@ -120,7 +119,7 @@ export const asyncRoutes = [
         path: 'addclass',
         component: () => import('@/views/class/addclass/index'),
         name: 'Addclass',
-        meta: { title: '添加班级', icon: 'form', roles: ['5', '1'] }
+        meta: { title: '添加班级', icon: 'form', roles: ['5', '3'] }
       }
     ]
   },
@@ -128,13 +127,13 @@ export const asyncRoutes = [
     path: '/stumodify',
     component: () => import('@/views/student/stumodify'),
     hidden: true,
-    meta: { roles: ['5', '1'] }
+    meta: { roles: ['5', '3'] }
   },
   {
     path: '/modifyclass',
     component: () => import('@/views/class/modifyclass'),
     hidden: true,
-    meta: { roles: ['5', '1'] }
+    meta: { roles: ['5', '3'] }
   },
   {
     path: '/external-link',
