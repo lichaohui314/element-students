@@ -24,9 +24,9 @@
           slot="dropdown"
           class="user-dropdown"
         >
-          <router-link to="/home">
+          <router-link to="/yourprofile">
             <el-dropdown-item>
-              Home
+              个人中心
             </el-dropdown-item>
           </router-link>
           <a
@@ -35,17 +35,11 @@
           >
             <el-dropdown-item>Github</el-dropdown-item>
           </a>
-          <a
-            target="_blank"
-            href="https://panjiachen.github.io/vue-element-admin-site/zh/guide/"
-          >
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
           <el-dropdown-item divided>
             <span
               style="display:block;"
               @click="logout"
-            >Log Out</span>
+            >退出登录</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

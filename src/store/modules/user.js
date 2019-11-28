@@ -5,6 +5,7 @@ import router, { resetRouter } from '@/router'
 const state = {
   token: getToken(),
   name: '',
+  username: '',
   avatar: '',
   introduction: '',
   roles: [],
@@ -14,6 +15,9 @@ const state = {
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
+  },
+  SET_USERNAME: (state, username) => {
+    state.username = username
   },
   SET_NAME: (state, name) => {
     state.name = name
@@ -55,11 +59,12 @@ const actions = {
         if (!response) {
           return false
         }
-        const { username, roles, avatar, level } = response
+        const { username, roles, avatar, level, name } = response
         if (!roles || roles.length <= 0) {
           reject('角色必须是非空数组')
         }
-        commit('SET_NAME', username)
+        commit('SET_USERNAME', username)
+        commit('SET_NAME', name)
         commit('SET_ROLES', roles)
         commit('SET_LEVEL', level)
         commit('SET_AVATAR', avatar)

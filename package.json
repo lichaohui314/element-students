@@ -19,6 +19,7 @@
     "echarts": "^4.5.0",
     "element-ui": "2.7.2",
     "eslint-loader": "^3.0.2",
+    "file-saver": "^2.0.2",
     "js-cookie": "2.2.0",
     "jsonp": "^0.2.1",
     "node-sass": "^4.13.0",
@@ -28,7 +29,8 @@
     "vue": "2.6.10",
     "vue-count-to": "^1.0.13",
     "vue-router": "3.0.6",
-    "vuex": "3.1.0"
+    "vuex": "3.1.0",
+    "xlsx": "^0.15.2"
   },
   "devDependencies": {
     "@babel/core": "7.0.0",

@@ -9,6 +9,10 @@ export const adminLogin = (admin) => {
 export const addAdmin = (admin) => {
   return axios.post(url + '/addadmin', { ...admin })
 }
+// 用户修改
+export const modifyAdmin = (admin) => {
+  return axios.post(url + '/modifyadmin', { ...admin })
+}
 
 // 获取所有学生
 export const getAll = () => {

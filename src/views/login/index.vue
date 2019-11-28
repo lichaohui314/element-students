@@ -61,7 +61,6 @@
           @click.native.prevent="handleLogin"
         >登录</el-button>
         <el-button
-          :loading="loading"
           style="width:45%;margin-bottom:30px;"
           @click="handleRegister"
         >注册</el-button>

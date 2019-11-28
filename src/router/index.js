@@ -53,6 +53,17 @@ export const constantRoutes = [
       component: () => import('@/views/home/index'),
       meta: { title: '首页', icon: 'dashboard' }
     }]
+  },
+  {
+    path: '/yourprofile',
+    component: Layout,
+    children: [{
+      path: '/yourprofile',
+      name: 'Fourprofile',
+      component: () => import('@/views/yourprofile/index'),
+      meta: { title: '个人信息' },
+      hidden: true
+    }]
   }
 ]
 export const asyncRoutes = [

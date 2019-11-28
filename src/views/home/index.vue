@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import PanelGroup from "./components/PanelGroup";
-import LineChart from "./components/LineChart";
+import PanelGroup from './components/PanelGroup'
+import LineChart from './components/LineChart'
 
 const lineChartData = {
   newVisitis: {
@@ -33,10 +33,10 @@ const lineChartData = {
     expectedData: [255, 237, 235, 240, 200, 150, 160, 255, 237, 250, 300, 350],
     actualData: [190, 240, 233, 230, 130, 140, 155, 213, 240, 213, 250, 291]
   }
-};
+}
 
 export default {
-  name: "DashboardAdmin",
+  name: 'DashboardAdmin',
   components: {
     PanelGroup,
     LineChart
@@ -44,14 +44,14 @@ export default {
   data() {
     return {
       lineChartData: lineChartData.newVisitis
-    };
+    }
   },
   methods: {
     handleSetLineChartData(type) {
-      this.lineChartData = lineChartData[type];
+      this.lineChartData = lineChartData[type]
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
